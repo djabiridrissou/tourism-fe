@@ -14,10 +14,10 @@ const Home = () => {
       <Hero />
       <FeaturedDestinations />
       <UniqueExperiences />
-      <InteractiveMap />
-      <HiddenGems />
+{/*       <InteractiveMap />
+      <HiddenGems /> */}
       <RealTimeInfo />
-      <TravelerReviews />
+     {/*  <TravelerReviews /> */}
       <PersonalizationBanner />
       <NewsletterBooking />
     </div>

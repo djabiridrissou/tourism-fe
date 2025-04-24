@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <section className="pt-20 bg-cover bg-center bg-no-repeat" style={{ 
-      backgroundImage: "url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80')" 
+      backgroundImage: "url('https://images.pexels.com/photos/1004584/pexels-photo-1004584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" 
     }}>
       <div className="bg-black bg-opacity-40 pt-16 pb-24 sm:pb-32">
         <div className="container mx-auto px-4">

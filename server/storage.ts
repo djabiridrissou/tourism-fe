@@ -121,7 +121,7 @@ export class MemStorage implements IStorage {
         region: "Central Region",
         description: "Historic coastal town with rich cultural heritage and stunning beaches. Cape Coast Castle, a UNESCO World Heritage site, stands as a powerful reminder of the transatlantic slave trade. Nearby, Kakum National Park offers treetop walks through lush rainforest.",
         shortDescription: "Historic coastal town with rich cultural heritage and stunning beaches.",
-        imageUrl: "https://images.unsplash.com/photo-1594740557168-6d1e51da0f9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://www.penguintravel.com/uploads/news/news_490.jpg",
         rating: 47,
         coordinates: { lat: 5.1053, lng: -1.2466 },
         topAttractions: ["Cape Coast Castle", "Kakum National Park"],
@@ -132,7 +132,7 @@ export class MemStorage implements IStorage {
         region: "Ashanti Region",
         description: "Kumasi is the cultural heart of Ghana and home to the Ashanti Kingdom with vibrant markets. The city is known for its rich cultural heritage, traditional crafts, and the seat of the Ashanti Kingdom. Visit the Manhyia Palace and explore the enormous Kejetia Market.",
         shortDescription: "Cultural heart of Ghana and home to the Ashanti Kingdom with vibrant markets.",
-        imageUrl: "https://images.unsplash.com/photo-1580266532994-d4a2ba94254f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://rggnews.com/wp-content/uploads/2024/03/WhatsApp-Image-2024-03-11-at-10.39.50-AM.jpeg",
         rating: 45,
         coordinates: { lat: 6.6885, lng: -1.6244 },
         topAttractions: ["Manhyia Palace", "Kejetia Market"],
@@ -159,7 +159,7 @@ export class MemStorage implements IStorage {
         title: "Traditional Dance Workshops",
         category: "Cultural",
         description: "Learn authentic Ghanaian dance forms from local experts",
-        imageUrl: "https://images.unsplash.com/photo-1553697388-94e804e2f0f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://landtours.com/blog/wp-content/uploads/2024/05/adowa.jpg-1080x675.webp",
         location: "Accra",
         duration: "3 hours",
         price: 45
@@ -168,7 +168,7 @@ export class MemStorage implements IStorage {
         title: "Ghanaian Cooking Classes",
         category: "Culinary",
         description: "Master local dishes with ingredients from traditional markets",
-        imageUrl: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://protour.africa/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-19-at-9.37.15-PM.jpeg",
         location: "Kumasi",
         duration: "4 hours",
         price: 60
@@ -177,7 +177,7 @@ export class MemStorage implements IStorage {
         title: "Kente Weaving Workshop",
         category: "Crafts",
         description: "Learn traditional textile techniques from master weavers",
-        imageUrl: "https://images.unsplash.com/photo-1531685250784-7569952593d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        imageUrl: "https://visitghana.com/wp-content/uploads/2019/02/3903_adanwomase-kente-village.jpg",
         location: "Bonwire",
         duration: "5 hours",
         price: 50
@@ -191,7 +191,7 @@ export class MemStorage implements IStorage {
       {
         name: "Lake Bosumtwi",
         description: "A sacred lake formed by a meteorite impact, surrounded by traditional villages and lush forests.",
-        imageUrl: "https://images.unsplash.com/photo-1569488859134-24b568d5ac14?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
+        imageUrl: "https://images.pexels.com/photos/2091351/pexels-photo-2091351.jpeg",
         region: "Ashanti Region"
       },
       {
@@ -267,7 +267,7 @@ export class MemStorage implements IStorage {
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.userIdCounter++;
     const now = new Date();
-    const user: User = { ...insertUser, id, createdAt: now };
+    const user: any = { ...insertUser, id, createdAt: now };
     this.users.set(id, user);
     return user;
   }
@@ -304,7 +304,7 @@ export class MemStorage implements IStorage {
 
   async createDestination(insertDestination: InsertDestination): Promise<Destination> {
     const id = this.destinationIdCounter++;
-    const destination: Destination = { ...insertDestination, id };
+    const destination: any = { ...insertDestination, id };
     this.destinations.set(id, destination);
     return destination;
   }
@@ -326,7 +326,7 @@ export class MemStorage implements IStorage {
 
   async createExperience(insertExperience: InsertExperience): Promise<Experience> {
     const id = this.experienceIdCounter++;
-    const experience: Experience = { ...insertExperience, id };
+    const experience: any = { ...insertExperience, id };
     this.experiences.set(id, experience);
     return experience;
   }
@@ -361,7 +361,7 @@ export class MemStorage implements IStorage {
   async createReview(insertReview: InsertReview): Promise<Review> {
     const id = this.reviewIdCounter++;
     const now = new Date();
-    const review: Review = { ...insertReview, id, createdAt: now };
+    const review: any = { ...insertReview, id, createdAt: now };
     this.reviews.set(id, review);
     return review;
   }
@@ -422,7 +422,7 @@ export class MemStorage implements IStorage {
   async createBooking(insertBooking: InsertBooking): Promise<Booking> {
     const id = this.bookingIdCounter++;
     const now = new Date();
-    const booking: Booking = { ...insertBooking, id, createdAt: now };
+    const booking: any = { ...insertBooking, id, createdAt: now };
     this.bookings.set(id, booking);
     return booking;
   }
@@ -472,7 +472,7 @@ export class MemStorage implements IStorage {
     }
     
     const id = this.preferenceIdCounter++;
-    const preference: Preference = { ...insertPreference, id };
+    const preference: any = { ...insertPreference, id };
     this.userPreferences.set(id, preference);
     return preference;
   }
