@@ -13,6 +13,9 @@ const Hero = () => {
     window.location.href = `/destinations?search=${encodeURIComponent(destination)}`;
   };
 
+
+
+
   return (
     <section className="pt-20 bg-cover bg-center bg-no-repeat" style={{ 
       backgroundImage: "url('https://images.pexels.com/photos/1004584/pexels-photo-1004584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')" 

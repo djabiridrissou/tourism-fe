@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Destination } from "@shared/schema";
 import DestinationCard from "@/components/common/DestinationCard";
 import SearchBar from "@/components/common/SearchBar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useGetAllDestinationsQuery } from "@/redux/features/app";
 
 const regions = [
   "All Regions",
@@ -15,24 +14,35 @@ const regions = [
   "Western",
   "Volta",
   "Upper East",
-  "Upper West"
+  "Upper West",
 ];
 
 const Destinations = () => {
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(25);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("All Regions");
 
-  const { data: destinations = [], isLoading, error } = useQuery<Destination[]>({
-    queryKey: ['/api/destinations'],
-  });
+  const {
+    data: destinationsData,
+    isLoading,
+    error,
+  } = useGetAllDestinationsQuery({ page, limit, search: searchQuery });
 
   // Filter destinations based on search query and selected region
-  const filteredDestinations = destinations.filter(destination => {
-    const matchesSearch = destination.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         destination.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesRegion = selectedRegion === "All Regions" || destination.region.includes(selectedRegion);
-    return matchesSearch && matchesRegion;
-  });
+  const filteredDestinations = destinationsData?.data?.filter(
+    (destination: any) => {
+      const matchesSearch =
+        destination.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        destination.description
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+      const matchesRegion =
+        selectedRegion === "All Regions" ||
+        destination.region.includes(selectedRegion);
+      return matchesSearch && matchesRegion;
+    }
+  );
 
   // Handle region selection
   const handleRegionChange = (region: string) => {
@@ -47,12 +57,13 @@ const Destinations = () => {
             Explore Ghana's Beautiful Destinations
           </h1>
           <p className="text-lg text-gray-600">
-            Discover the rich culture, stunning landscapes, and vibrant cities that make Ghana a must-visit destination.
+            Discover the rich culture, stunning landscapes, and vibrant cities
+            that make Ghana a must-visit destination.
           </p>
         </div>
 
         <div className="mb-8">
-          <SearchBar 
+          <SearchBar
             placeholder="Search destinations by name or features..."
             onSearch={setSearchQuery}
           />
@@ -60,8 +71,8 @@ const Destinations = () => {
 
         <Tabs defaultValue="All Regions" className="mb-8">
           <TabsList className="flex flex-wrap gap-2 mb-6 justify-center">
-            {regions.map(region => (
-              <TabsTrigger 
+            {regions.map((region) => (
+              <TabsTrigger
                 key={region}
                 value={region}
                 onClick={() => handleRegionChange(region)}
@@ -75,21 +86,28 @@ const Destinations = () => {
 
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="bg-white rounded-xl h-96 animate-pulse"></div>
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="bg-white rounded-xl h-96 animate-pulse"
+              ></div>
             ))}
           </div>
         ) : error ? (
           <div className="text-center py-10">
-            <p className="text-red-500">Error loading destinations. Please try again later.</p>
+            <p className="text-red-500">
+              Error loading destinations. Please try again later.
+            </p>
           </div>
         ) : filteredDestinations.length === 0 ? (
           <div className="text-center py-10">
-            <p className="text-gray-500">No destinations found matching your search criteria.</p>
+            <p className="text-gray-500">
+              No destinations found matching your search criteria.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredDestinations.map(destination => (
+            {filteredDestinations.map((destination: any) => (
               <DestinationCard key={destination.id} destination={destination} />
             ))}
           </div>

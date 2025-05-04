@@ -7,19 +7,22 @@ import RealTimeInfo from "@/components/home/RealTimeInfo";
 import TravelerReviews from "@/components/home/TravelerReviews";
 import PersonalizationBanner from "@/components/home/PersonalizationBanner";
 import NewsletterBooking from "@/components/home/NewsletterBooking";
+import IndexHome from "./IndexHome";
 
 const Home = () => {
   return (
     <div>
-      <Hero />
+
+      <IndexHome />
+      {/*  <Hero />
       <FeaturedDestinations />
       <UniqueExperiences />
-{/*       <InteractiveMap />
-      <HiddenGems /> */}
+      <InteractiveMap />
+  <HiddenGems /> 
       <RealTimeInfo />
-     {/*  <TravelerReviews /> */}
+     {/*  <TravelerReviews /> 
       <PersonalizationBanner />
-      <NewsletterBooking />
+      <NewsletterBooking /> */}
     </div>
   );
 };

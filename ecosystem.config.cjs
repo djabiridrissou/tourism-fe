@@ -1,13 +1,12 @@
 module.exports = {
-    apps: [{
-        name: "tourism-app",
-        script: "./dist/index.js",
+    apps: [
+      {
+        name: 'vite-preview',
+        script: 'npx',
+        args: 'vite preview --port 8881 --host 0.0.0.0',
         env: {
-            NODE_ENV: "production"
+          NODE_ENV: 'production',
         },
-        instances: 1,
-        autorestart: true,
-        watch: false,
-        max_memory_restart: '1G'
-    }]
-};
+      },
+    ],
+  };
